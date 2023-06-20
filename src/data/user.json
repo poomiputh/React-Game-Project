@@ -1,0 +1,27 @@
+{
+    "name": "Nook",
+
+    "age": 22,
+
+    "isDead": false,
+
+    "job": {
+        "position": "Software Engineer",
+        "company": "MyCos Technologies"
+    },
+
+    "cars": [
+        {
+            "brand": "BMW",
+            "model": "M3",
+            "year": 2015
+        },
+        {
+            "brand": "Honda",
+            "model": "125",
+            "year": 2000
+        }
+    ]
+}
+
+

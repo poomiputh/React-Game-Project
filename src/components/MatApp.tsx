@@ -14,14 +14,15 @@ function MatApp({ children }: { children: ReactNode }) {
                             component="div"
                             sx={{ flexGrow: 1 }}
                         >
-                            React CS CMU
+                            React Game Project
                         </Typography>
                     </Toolbar>
                 </AppBar>
             </Box>
             <Container
                 style={{
-                    marginTop: '1rem',
+                    marginTop: '0rem',
+                    padding: 0,
                 }}
             >
                 {children}

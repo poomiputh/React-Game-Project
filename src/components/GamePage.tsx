@@ -1,10 +1,10 @@
-import MemCardRef from './MemCardRef'
+import MemCard from './MemCard'
 interface GamePageProps {
     playerName: string
 }
 
 const GamePage = ({ playerName }: GamePageProps) => {
-    return <MemCardRef playerName={playerName} />
+    return <MemCard playerName={playerName} />
 }
 
 export default GamePage

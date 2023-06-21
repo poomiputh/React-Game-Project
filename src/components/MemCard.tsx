@@ -7,6 +7,7 @@ import {
 } from '@mui/material'
 import { useLayoutEffect, useRef } from 'react'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { sleep } from '../data/userApi'
 import { KingCard_1 } from './image_components/ImageComponents'
 
@@ -26,7 +27,9 @@ interface MemCardProps {
     playerName: string
 }
 
-const MemCardRef = ({ playerName }: MemCardProps) => {
+const MemCard = ({ playerName }: MemCardProps) => {
+    const navigate = useNavigate()
+
     const [tileNum, setTileNum] = useState<number>(4)
     const [ranSeq, setRanSeq] = useState<number[]>(
         shuffleNumArray(
@@ -36,6 +39,10 @@ const MemCardRef = ({ playerName }: MemCardProps) => {
     const [playerSeq, setPlayerSeq] = useState<number[]>([])
     const [playerScore, setPlayerScore] = useState<number>(0)
     const [displayCards, setDisplayCards] = useState<number[]>([0, ...ranSeq])
+
+    const goToResult = () => {
+        navigate('/result', { state: { score: playerScore } })
+    }
 
     const cycleSeq = async (cycleMs: number) => {
         const tempArray = [...displayCards]
@@ -50,8 +57,8 @@ const MemCardRef = ({ playerName }: MemCardProps) => {
             setPlayerScore(playerScore + 1)
             setPlayerSeq([])
             setTileNum(tileNum + 1)
-        } else {
-            alert('You Lose.')
+        } else if (tileNum === 7 || !areEqual) {
+            goToResult()
         }
     }
 
@@ -106,41 +113,6 @@ const MemCardRef = ({ playerName }: MemCardProps) => {
     useEffect(() => {
         console.log('Score : ', playerScore)
     }, [playerScore])
-
-    // const generateCard = () => {
-    //     let cards: any[] = []
-    //     ranSeq.forEach((e, i) => {
-    //         cards.push(
-    //             <Grid key={'G-' + (i + 1)} item xs={6} md={6} lg={6}>
-    //                 {i + 1 === displayCards[0] ? (
-    //                     <Card
-    //                         key={'C-' + (i + 1)}
-    //                         onClick={() => handleCardClick(i + 1)}
-    //                         style={{ backgroundColor: 'lightgreen' }}
-    //                     >
-    //                         <CardActionArea>
-    //                             <CardContent>
-    //                                 <Typography>Card {i + 1}</Typography>
-    //                             </CardContent>
-    //                         </CardActionArea>
-    //                     </Card>
-    //                 ) : (
-    //                     <Card
-    //                         key={'C-' + (i + 1)}
-    //                         onClick={() => handleCardClick(i + 1)}
-    //                     >
-    //                         <CardActionArea>
-    //                             <CardContent>
-    //                                 <Typography>Card {i + 1}</Typography>
-    //                             </CardContent>
-    //                         </CardActionArea>
-    //                     </Card>
-    //                 )}
-    //             </Grid>,
-    //         )
-    //     })
-    //     return cards
-    // }
 
     const generateCard = () => {
         const gameCards: any[] = [
@@ -210,4 +182,4 @@ const MemCardRef = ({ playerName }: MemCardProps) => {
     )
 }
 
-export default MemCardRef
+export default MemCard

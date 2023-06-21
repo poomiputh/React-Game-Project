@@ -9,7 +9,16 @@ import { useLayoutEffect, useRef } from 'react'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { sleep } from '../data/userApi'
-import { KingCard_1, QueenCard_1 } from './image_components/ImageComponents'
+import {
+    KingCard_1,
+    QueenCard_1,
+    KingCard_2,
+    KingCard_3,
+    KingCard_4,
+    QueenCard_4,
+    QueenCard_2,
+    QueenCard_3,
+} from './image_components/ImageComponents'
 
 const shuffleNumArray = (numArray: number[]) => {
     const shuffledNumbers = [...numArray]
@@ -121,12 +130,14 @@ const MemCard = ({ playerName }: MemCardProps) => {
 
     const generateCard = () => {
         const gameCards: any[] = [
-            <KingCard_1 opacity="100%" maxHeight={150} />,
             <QueenCard_1 opacity="100%" maxHeight={150} />,
+            <QueenCard_2 opacity="100%" maxHeight={150} />,
+            <QueenCard_3 opacity="100%" maxHeight={150} />,
+            <QueenCard_4 opacity="100%" maxHeight={150} />,
             <KingCard_1 opacity="100%" maxHeight={150} />,
-            <KingCard_1 opacity="100%" maxHeight={150} />,
-            <KingCard_1 opacity="100%" maxHeight={150} />,
-            <KingCard_1 opacity="100%" maxHeight={150} />,
+            <KingCard_2 opacity="100%" maxHeight={150} />,
+            <KingCard_3 opacity="100%" maxHeight={150} />,
+            <KingCard_4 opacity="100%" maxHeight={150} />,
         ]
         let cards: any[] = []
         ranSeq.forEach((e, i) => {

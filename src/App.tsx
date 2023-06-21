@@ -1,6 +1,6 @@
 import InitRoute from './components/InitRoute'
 
-export const ProjectName = 'Nook Matching Game'
+export const ProjectName = 'Sonic Matching Game'
 
 function App() {
     return (

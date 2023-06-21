@@ -3,37 +3,28 @@ import { useState } from 'react'
 import NamePage from './NamePage'
 import MatApp from './MatApp'
 import titleBG from '../images/titleBG.svg'
+import { StartGameButton, Sonic } from './image_components/ImageComponents'
 
 const HomePage = () => {
     const [isStart, setIsStart] = useState<boolean>(false)
+    const [startOpacity, setStartOpacity] = useState<string>('100%')
     const handleStartButton = () => {
         setIsStart(true)
     }
+    const handleMouseEnter = () => {
+        setStartOpacity('50%')
+    }
 
-    const startGame = (
-        <Button style={{ backgroundColor: 'transparent' }}>
-            <img
-                src="src\images\startGame.svg"
-                style={{ minHeight: 80 }}
-                onClick={handleStartButton}
-            ></img>
-        </Button>
-    )
-
-    // const titleBG = (
-    //     <img
-    //         src="src\images\titleBG.svg"
-    //         style={{ minHeight: 500 }}
-    //         onClick={handleStartButton}
-    //     ></img>
-    // )
+    const handleMouseLeave = () => {
+        setStartOpacity('100%')
+    }
 
     return (
         <>
             <MatApp>
                 <div
                     style={{
-                        backgroundImage: `url(${titleBG})`,
+                        // backgroundImage: `url(${titleBG})`,
                         backgroundPosition: 'center',
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
@@ -44,21 +35,45 @@ const HomePage = () => {
                         <NamePage />
                     ) : (
                         <>
-                            {/* <Grid container justifyContent={'center'}>
-                            <Grid item>{titleBG}</Grid>
-                        </Grid> */}
-                            <Grid container justifyContent={'center'}>
+                            <Grid
+                                container
+                                justifyContent={'center'}
+                                paddingTop={2}
+                            >
                                 <Grid item>
-                                    <Typography
-                                        variant="h2"
-                                        style={{ color: 'white' }}
-                                    >
-                                        Fun Card Game :D
+                                    <Typography variant="h2">
+                                        SonicAssCardGame
                                     </Typography>
                                 </Grid>
                             </Grid>
-                            <Grid container justifyContent={'center'}>
-                                <Grid item>{startGame}</Grid>
+                            <Grid
+                                container
+                                justifyContent={'center'}
+                                paddingTop={0}
+                            >
+                                <Grid item>
+                                    <Sonic />
+                                </Grid>
+                            </Grid>
+                            <Grid
+                                container
+                                justifyContent={'center'}
+                                paddingTop={2}
+                            >
+                                <Grid item>
+                                    <Button
+                                        style={{
+                                            backgroundColor: 'transparent',
+                                            filter:
+                                                'opacity(' + startOpacity + ')',
+                                        }}
+                                        onClick={handleStartButton}
+                                        onMouseEnter={handleMouseEnter}
+                                        onMouseLeave={handleMouseLeave}
+                                    >
+                                        <StartGameButton />
+                                    </Button>
+                                </Grid>
                             </Grid>
                         </>
                     )}

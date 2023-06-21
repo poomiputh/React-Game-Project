@@ -42,7 +42,9 @@ const MemCard = ({ playerName }: MemCardProps) => {
     const [displayCards, setDisplayCards] = useState<number[]>([0, ...ranSeq])
 
     const goToResult = () => {
-        navigate('/result', { state: { score: playerScore } })
+        navigate('/result', {
+            state: { score: playerScore, playerName: playerName },
+        })
     }
 
     const cycleSeq = async (cycleMs: number) => {
@@ -137,7 +139,7 @@ const MemCard = ({ playerName }: MemCardProps) => {
                             onClick={() => handleCardClick(i + 1)}
                             style={{ backgroundColor: 'lightgreen' }}
                         >
-                            <CardActionArea>
+                            <CardActionArea disabled={true}>
                                 <CardContent>
                                     <Grid container justifyContent={'center'}>
                                         {gameCards[i]}
@@ -150,13 +152,29 @@ const MemCard = ({ playerName }: MemCardProps) => {
                             key={'C-' + (i + 1)}
                             onClick={() => handleCardClick(i + 1)}
                         >
-                            <CardActionArea>
-                                <CardContent>
-                                    <Grid container justifyContent={'center'}>
-                                        {gameCards[i]}
-                                    </Grid>
-                                </CardContent>
-                            </CardActionArea>
+                            {displayCards.length !== 0 ? (
+                                <CardActionArea disabled={true}>
+                                    <CardContent>
+                                        <Grid
+                                            container
+                                            justifyContent={'center'}
+                                        >
+                                            {gameCards[i]}
+                                        </Grid>
+                                    </CardContent>
+                                </CardActionArea>
+                            ) : (
+                                <CardActionArea>
+                                    <CardContent>
+                                        <Grid
+                                            container
+                                            justifyContent={'center'}
+                                        >
+                                            {gameCards[i]}
+                                        </Grid>
+                                    </CardContent>
+                                </CardActionArea>
+                            )}
                         </Card>
                     )}
                 </Grid>,

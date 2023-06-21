@@ -51,11 +51,6 @@ export const KingCard_4 = ({ opacity, maxHeight }: CardProps) => {
     )
 }
 
-interface QueenCard_1_Props {
-    opacity: string
-    maxHeight: number
-}
-
 export const QueenCard_1 = ({ opacity, maxHeight }: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',

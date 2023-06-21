@@ -4,12 +4,13 @@ import {
     CardActionArea,
     CardContent,
     Typography,
+    tablePaginationClasses,
 } from '@mui/material'
 import { useLayoutEffect, useRef } from 'react'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { sleep } from '../data/userApi'
-import { KingCard_1 } from './image_components/ImageComponents'
+import { KingCard_1, QueenCard_1 } from './image_components/ImageComponents'
 
 const shuffleNumArray = (numArray: number[]) => {
     const shuffledNumbers = [...numArray]
@@ -57,7 +58,7 @@ const MemCard = ({ playerName }: MemCardProps) => {
             setPlayerScore(playerScore + 1)
             setPlayerSeq([])
             setTileNum(tileNum + 1)
-        } else if (tileNum === 7 || !areEqual) {
+        } else if (!areEqual) {
             goToResult()
         }
     }
@@ -85,6 +86,9 @@ const MemCard = ({ playerName }: MemCardProps) => {
                     Array.from({ length: tileNum }, (_, index) => index + 1),
                 ),
             )
+        }
+        if (tileNum >= 7) {
+            goToResult()
         }
     }, [tileNum])
 
@@ -117,7 +121,7 @@ const MemCard = ({ playerName }: MemCardProps) => {
     const generateCard = () => {
         const gameCards: any[] = [
             <KingCard_1 opacity="100%" maxHeight={150} />,
-            <KingCard_1 opacity="100%" maxHeight={150} />,
+            <QueenCard_1 opacity="100%" maxHeight={150} />,
             <KingCard_1 opacity="100%" maxHeight={150} />,
             <KingCard_1 opacity="100%" maxHeight={150} />,
             <KingCard_1 opacity="100%" maxHeight={150} />,

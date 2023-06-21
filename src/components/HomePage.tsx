@@ -11,11 +11,11 @@ const HomePage = () => {
     const handleStartButton = () => {
         setIsStart(true)
     }
-    const handleMouseEnter = () => {
+    const handleStartEnter = () => {
         setStartOpacity('50%')
     }
 
-    const handleMouseLeave = () => {
+    const handleStartLeave = () => {
         setStartOpacity('100%')
     }
 
@@ -68,8 +68,8 @@ const HomePage = () => {
                                                 'opacity(' + startOpacity + ')',
                                         }}
                                         onClick={handleStartButton}
-                                        onMouseEnter={handleMouseEnter}
-                                        onMouseLeave={handleMouseLeave}
+                                        onMouseEnter={handleStartEnter}
+                                        onMouseLeave={handleStartLeave}
                                     >
                                         <StartGameButton />
                                     </Button>

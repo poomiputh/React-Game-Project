@@ -135,10 +135,12 @@ const MemCard = ({ playerName }: MemCardProps) => {
                     {i + 1 === displayCards[0] ? (
                         <Card
                             key={'C-' + (i + 1)}
-                            onClick={() => handleCardClick(i + 1)}
                             style={{ backgroundColor: 'lightgreen' }}
                         >
-                            <CardActionArea disabled={true}>
+                            <CardActionArea
+                                disabled={true}
+                                onClick={() => handleCardClick(i + 1)}
+                            >
                                 <CardContent>
                                     <Grid container justifyContent={'center'}>
                                         {gameCards[i]}
@@ -147,12 +149,12 @@ const MemCard = ({ playerName }: MemCardProps) => {
                             </CardActionArea>
                         </Card>
                     ) : (
-                        <Card
-                            key={'C-' + (i + 1)}
-                            onClick={() => handleCardClick(i + 1)}
-                        >
+                        <Card key={'C-' + (i + 1)}>
                             {displayCards.length !== 0 ? (
-                                <CardActionArea disabled={true}>
+                                <CardActionArea
+                                    disabled={true}
+                                    onClick={() => handleCardClick(i + 1)}
+                                >
                                     <CardContent>
                                         <Grid
                                             container

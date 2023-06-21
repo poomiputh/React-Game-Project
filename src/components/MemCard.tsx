@@ -49,6 +49,8 @@ const MemCard = ({ playerName }: MemCardProps) => {
     const [playerScore, setPlayerScore] = useState<number>(0)
     const [displayCards, setDisplayCards] = useState<number[]>([0, ...ranSeq])
 
+    const [clickable, setClickable] = useState<boolean>(false)
+
     const goToResult = () => {
         navigate('/result', {
             state: { score: playerScore, playerName: playerName },
@@ -74,14 +76,16 @@ const MemCard = ({ playerName }: MemCardProps) => {
     }
 
     const handleCardClick = (cardIndex: number) => {
-        if (playerSeq) {
-            const tempArray = [...playerSeq]
-            tempArray.push(cardIndex)
-            setPlayerSeq(tempArray)
-        } else {
-            const tempArray = []
-            tempArray.push(cardIndex)
-            setPlayerSeq(tempArray)
+        if (clickable) {
+            if (playerSeq) {
+                const tempArray = [...playerSeq]
+                tempArray.push(cardIndex)
+                setPlayerSeq(tempArray)
+            } else {
+                const tempArray = []
+                tempArray.push(cardIndex)
+                setPlayerSeq(tempArray)
+            }
         }
     }
 
@@ -113,7 +117,10 @@ const MemCard = ({ playerName }: MemCardProps) => {
 
     useEffect(() => {
         if (displayCards.length !== 0) {
+            setClickable(false)
             cycleSeq(1000)
+        } else {
+            setClickable(true)
         }
         if (playerSeq.length === ranSeq.length) {
             checkWin()
@@ -148,10 +155,7 @@ const MemCard = ({ playerName }: MemCardProps) => {
                             key={'C-' + (i + 1)}
                             style={{ backgroundColor: 'lightgreen' }}
                         >
-                            <CardActionArea
-                                disabled={true}
-                                onClick={() => handleCardClick(i + 1)}
-                            >
+                            <CardActionArea disabled={true}>
                                 <CardContent>
                                     <Grid container justifyContent={'center'}>
                                         {gameCards[i]}
@@ -160,12 +164,12 @@ const MemCard = ({ playerName }: MemCardProps) => {
                             </CardActionArea>
                         </Card>
                     ) : (
-                        <Card key={'C-' + (i + 1)}>
+                        <Card
+                            key={'C-' + (i + 1)}
+                            onClick={() => handleCardClick(i + 1)}
+                        >
                             {displayCards.length !== 0 ? (
-                                <CardActionArea
-                                    disabled={true}
-                                    onClick={() => handleCardClick(i + 1)}
-                                >
+                                <CardActionArea disabled={true}>
                                     <CardContent>
                                         <Grid
                                             container

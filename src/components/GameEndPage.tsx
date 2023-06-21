@@ -18,6 +18,7 @@ const GameEndPage = () => {
     const onLoaded = async () => {
         try {
             await addAppScore(appScore)
+            window.history.replaceState({}, document.title)
         } catch (error) {
             console.log('addAppScore Error')
         }

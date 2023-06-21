@@ -1,9 +1,9 @@
-interface KingCard_1_Props {
+interface CardProps {
     opacity: string
     maxHeight: number
 }
 
-export const KingCard_1 = ({ opacity, maxHeight }: KingCard_1_Props) => {
+export const KingCard_1 = ({ opacity, maxHeight }: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
         maxHeight: maxHeight,
@@ -20,7 +20,7 @@ interface QueenCard_1_Props {
     maxHeight: number
 }
 
-export const QueenCard_1 = ({ opacity, maxHeight }: KingCard_1_Props) => {
+export const QueenCard_1 = ({ opacity, maxHeight }: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
         maxHeight: maxHeight,

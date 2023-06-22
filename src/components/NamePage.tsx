@@ -21,13 +21,25 @@ const NamePage = () => {
             {isStartGame ? (
                 <GamePage playerName={playerName} />
             ) : (
-                <Grid container justifyContent={'center'} spacing={2}>
+                <Grid
+                    container
+                    justifyContent={'center'}
+                    spacing={2}
+                    marginTop={0}
+                    style={{ position: 'relative', zIndex: '2' }}
+                >
                     <Grid item>
-                        <TextField
+                        <input
+                            className="text_box"
+                            onChange={onChangeName}
+                            placeholder="Player Name"
+                            type="text"
+                        ></input>
+                        {/* <TextField
                             label="Player Name"
                             variant="outlined"
                             onChange={onChangeName}
-                        />
+                        /> */}
                     </Grid>
                     <Grid item>
                         <Button onClick={handleConfirm} variant="outlined">

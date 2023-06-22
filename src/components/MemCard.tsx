@@ -89,6 +89,10 @@ const MemCard = ({ playerName }: MemCardProps) => {
         }
     }
 
+    const handleLoaded = () => {
+        console.log('Card Loaded')
+    }
+
     let firstUpdate = useRef(true)
     useLayoutEffect(() => {
         if (firstUpdate.current) {
@@ -141,14 +145,36 @@ const MemCard = ({ playerName }: MemCardProps) => {
 
     const generateCard = () => {
         const gameCards: any[] = [
-            <QueenCard_1 opacity="100%" maxHeight={150} />,
-            <QueenCard_2 opacity="100%" maxHeight={150} />,
-            <QueenCard_3 opacity="100%" maxHeight={150} />,
-            <QueenCard_4 opacity="100%" maxHeight={150} />,
-            <KingCard_1 opacity="100%" maxHeight={150} />,
-            <KingCard_2 opacity="100%" maxHeight={150} />,
-            <KingCard_3 opacity="100%" maxHeight={150} />,
-            <KingCard_4 opacity="100%" maxHeight={150} />,
+            <QueenCard_1
+                opacity="100%"
+                maxHeight={150}
+                onDataLoaded={handleLoaded}
+            />,
+            <QueenCard_2
+                opacity="100%"
+                maxHeight={150}
+                onDataLoaded={handleLoaded}
+            />,
+            <QueenCard_3
+                opacity="100%"
+                maxHeight={150}
+                onDataLoaded={handleLoaded}
+            />,
+            <KingCard_1
+                opacity="100%"
+                maxHeight={150}
+                onDataLoaded={handleLoaded}
+            />,
+            <KingCard_2
+                opacity="100%"
+                maxHeight={150}
+                onDataLoaded={handleLoaded}
+            />,
+            <KingCard_3
+                opacity="100%"
+                maxHeight={150}
+                onDataLoaded={handleLoaded}
+            />,
         ]
         let cards: any[] = []
         ranSeq.forEach((e, i) => {
@@ -205,7 +231,14 @@ const MemCard = ({ playerName }: MemCardProps) => {
 
     return (
         <>
-            <Grid container spacing={2} paddingTop={2} paddingLeft={3}>
+            <Grid
+                container
+                spacing={2}
+                paddingTop={2}
+                paddingLeft={3}
+                marginTop={0}
+                style={{ position: 'relative', zIndex: '2' }}
+            >
                 <Grid item xs={12} md={12} lg={12}>
                     <Typography variant="h5">
                         {playerName}'s Score : {playerScore}
@@ -217,6 +250,7 @@ const MemCard = ({ playerName }: MemCardProps) => {
                 spacing={2}
                 paddingTop={3}
                 justifyContent={'center'}
+                style={{ position: 'relative', zIndex: '2' }}
             >
                 {generateCard()}
             </Grid>

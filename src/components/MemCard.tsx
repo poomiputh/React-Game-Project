@@ -145,36 +145,12 @@ const MemCard = ({ playerName }: MemCardProps) => {
 
     const generateCard = () => {
         const gameCards: any[] = [
-            <QueenCard_1
-                opacity="100%"
-                maxHeight={150}
-                onDataLoaded={handleLoaded}
-            />,
-            <QueenCard_2
-                opacity="100%"
-                maxHeight={150}
-                onDataLoaded={handleLoaded}
-            />,
-            <QueenCard_3
-                opacity="100%"
-                maxHeight={150}
-                onDataLoaded={handleLoaded}
-            />,
-            <KingCard_1
-                opacity="100%"
-                maxHeight={150}
-                onDataLoaded={handleLoaded}
-            />,
-            <KingCard_2
-                opacity="100%"
-                maxHeight={150}
-                onDataLoaded={handleLoaded}
-            />,
-            <KingCard_3
-                opacity="100%"
-                maxHeight={150}
-                onDataLoaded={handleLoaded}
-            />,
+            <QueenCard_1 opacity="100%" maxHeight={150} />,
+            <QueenCard_2 opacity="100%" maxHeight={150} />,
+            <QueenCard_3 opacity="100%" maxHeight={150} />,
+            <KingCard_1 opacity="100%" maxHeight={150} />,
+            <KingCard_2 opacity="100%" maxHeight={150} />,
+            <KingCard_3 opacity="100%" maxHeight={150} />,
         ]
         let cards: any[] = []
         ranSeq.forEach((e, i) => {

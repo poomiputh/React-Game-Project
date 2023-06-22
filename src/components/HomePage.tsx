@@ -2,7 +2,7 @@ import { Button, Grid, Typography } from '@mui/material'
 import { useState } from 'react'
 import NamePage from './NamePage'
 import MatApp from './MatApp'
-import titleBG from '../images/titleBG.svg'
+import castleBG from '../images/castleBG.png'
 import { StartGameButton, Sonic } from './image_components/ImageComponents'
 
 const HomePage = () => {
@@ -24,7 +24,7 @@ const HomePage = () => {
             <MatApp>
                 <div
                     style={{
-                        // backgroundImage: `url(${titleBG})`,
+                        // backgroundImage: `url(${castleBG})`,
                         backgroundPosition: 'center',
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',

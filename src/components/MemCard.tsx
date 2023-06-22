@@ -95,14 +95,18 @@ const MemCard = ({ playerName }: MemCardProps) => {
             firstUpdate.current = false
         } else {
             console.log('tileNum : ', tileNum)
-            setRanSeq(
-                shuffleNumArray(
-                    Array.from({ length: tileNum }, (_, index) => index + 1),
-                ),
-            )
-        }
-        if (tileNum >= 7) {
-            goToResult()
+            if (tileNum >= 7) {
+                goToResult()
+            } else {
+                setRanSeq(
+                    shuffleNumArray(
+                        Array.from(
+                            { length: tileNum },
+                            (_, index) => index + 1,
+                        ),
+                    ),
+                )
+            }
         }
     }, [tileNum])
 

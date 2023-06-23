@@ -70,7 +70,7 @@ const MemCard = ({ playerName }: MemCardProps) => {
                 setCurRound(curRound + 1)
                 setPlayerScore(playerScore + 1)
                 setPlayerSeq([])
-                if (curRound % 5 === 0) {
+                if (curRound % 3 === 0) {
                     setTileNum(tileNum + 1)
                 } else {
                     setPrevTileNum(tileNum)

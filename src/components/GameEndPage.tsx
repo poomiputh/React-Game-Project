@@ -15,6 +15,7 @@ import cloudBG from '../images/cloudBG_1.svg'
 
 const GameEndPage = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true)
+    const [isEmpty, setIsEmpty] = useState<boolean>()
 
     const [startOpacity, setBackOpacity] = useState<string>('100%')
     const handleBackEnter = () => {
@@ -39,6 +40,7 @@ const GameEndPage = () => {
     }
 
     const handleDeleteSuccess = (deleteScoreID: number) => {
+        setIsEmpty(true)
         setScoresList((prev) => {
             return prev.filter((score) => score.id !== deleteScoreID)
         })
@@ -73,6 +75,11 @@ const GameEndPage = () => {
                 orderedResult = orderedResult.sort((a, b) => {
                     return b.score - a.score
                 })
+                if (orderedResult.length === 0) {
+                    setIsEmpty(true)
+                } else {
+                    setIsEmpty(false)
+                }
                 setScoresList(orderedResult)
             })
             setIsLoading(false)
@@ -165,7 +172,7 @@ const GameEndPage = () => {
                                 <Grid
                                     item
                                     xs={6}
-                                    style={{ padding: '20px 0 0 10px' }}
+                                    style={{ margin: '3vh 0 0 1.5vh' }}
                                 >
                                     Name
                                 </Grid>
@@ -175,7 +182,7 @@ const GameEndPage = () => {
                                     style={{
                                         display: 'grid',
                                         placeItems: 'center',
-                                        padding: '20px 0 0 0',
+                                        margin: '3vh 0 0 1vh',
                                     }}
                                 >
                                     Score
@@ -193,10 +200,31 @@ const GameEndPage = () => {
                             ) : (
                                 <></>
                             )}
-                            <ScoreLists
-                                scoreLists={scoresList}
-                                onDeleteSuccess={handleDeleteSuccess}
-                            />
+                            {isEmpty ? (
+                                <>
+                                    <div
+                                        style={{
+                                            marginLeft: '1.5vh',
+                                            marginTop: '2vh',
+                                        }}
+                                    >
+                                        <Typography
+                                            style={{
+                                                fontFamily: 'Public Pixel',
+                                            }}
+                                        >
+                                            No Score Records
+                                        </Typography>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <ScoreLists
+                                        scoreLists={scoresList}
+                                        onDeleteSuccess={handleDeleteSuccess}
+                                    />
+                                </>
+                            )}
                         </Grid>
                         <Grid
                             item

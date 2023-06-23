@@ -1,5 +1,6 @@
 import {
     Avatar,
+    Grid,
     IconButton,
     List,
     ListItem,
@@ -9,6 +10,7 @@ import {
 import { IScoreRequest, deleteAppScore } from '../../api/scoreApi'
 import ImageIcon from '@mui/icons-material/Image'
 import DeleteIcon from '@mui/icons-material/Delete'
+import { DelScore } from '../image_components/ImageComponents'
 
 interface ScoreListsProps {
     scoreLists: IScoreRequest[]
@@ -23,9 +25,20 @@ function ScoreLists({ scoreLists, onDeleteSuccess }: ScoreListsProps) {
     }
 
     return (
-        <List dense>
+        <List
+            dense
+            style={{
+                maxHeight: 200,
+                overflow: 'auto',
+                padding: '0 10px 0 10px',
+            }}
+        >
             {scoreLists.map((score) => (
                 <ListItem
+                    className="text_box"
+                    style={{
+                        fontFamily: 'Public Pixel',
+                    }}
                     key={score.id}
                     secondaryAction={
                         <IconButton
@@ -33,19 +46,33 @@ function ScoreLists({ scoreLists, onDeleteSuccess }: ScoreListsProps) {
                             aria-label="delete"
                             onClick={() => onClickDelete(score.id!)}
                         >
-                            <DeleteIcon />
+                            <DelScore></DelScore>
                         </IconButton>
                     }
                 >
-                    <ListItemAvatar>
+                    {/* <ListItemAvatar>
                         <Avatar>
                             <ImageIcon />
                         </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText
-                        primary={score.score + ' ' + score.name}
-                        secondary={score.projectName}
-                    />
+                    </ListItemAvatar> */}
+                    <Grid container>
+                        <Grid item xs={6}>
+                            <ListItemText
+                                disableTypography={true}
+                                primary={score.name}
+                            />
+                        </Grid>
+                        <Grid
+                            item
+                            xs={6}
+                            style={{ display: 'grid', placeItems: 'center' }}
+                        >
+                            <ListItemText
+                                disableTypography={true}
+                                primary={score.score}
+                            />
+                        </Grid>
+                    </Grid>
                 </ListItem>
             ))}
         </List>

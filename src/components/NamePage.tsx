@@ -2,10 +2,31 @@ import { useEffect, useState } from 'react'
 import { Button, Grid, TextField, Typography } from '@mui/material'
 import GamePage from './GamePage'
 import nameBox from '../images/nameBox.svg'
+import { ConfirmName, BackBtn } from './image_components/ImageComponents'
+import { useNavigate } from 'react-router-dom'
 
 const NamePage = () => {
+    const navigate = useNavigate()
+
+    const goToBack = () => {
+        navigate('/')
+    }
+    const [startOpacity, setConfrimOpacity] = useState<string>('100%')
+    const [backOpacity, setBackOpacity] = useState<string>('100%')
     const [playerName, setPlayerName] = useState<string>('Player')
     const [isStartGame, setIsStartGame] = useState<boolean>(false)
+    const handleConfrimEnter = () => {
+        setConfrimOpacity('50%')
+    }
+    const handleConfrimLeave = () => {
+        setConfrimOpacity('100%')
+    }
+    const handleBackEnter = () => {
+        setBackOpacity('50%')
+    }
+    const handleBackLeave = () => {
+        setBackOpacity('100%')
+    }
     const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPlayerName(e.target.value)
     }
@@ -19,6 +40,19 @@ const NamePage = () => {
 
     return (
         <>
+            <Button
+                style={{
+                    backgroundColor: 'transparent',
+                    filter: 'opacity(' + backOpacity + ')',
+                    position: 'fixed',
+                    zIndex: '2',
+                }}
+                onMouseEnter={handleBackEnter}
+                onMouseLeave={handleBackLeave}
+                onClick={goToBack}
+            >
+                <BackBtn></BackBtn>
+            </Button>
             {isStartGame ? (
                 <GamePage playerName={playerName} />
             ) : (
@@ -27,7 +61,11 @@ const NamePage = () => {
                     justifyContent={'center'}
                     spacing={2}
                     marginTop={0}
-                    style={{ position: 'relative', zIndex: '2' }}
+                    style={{
+                        position: 'fixed',
+                        zIndex: '2',
+                        top: '30vh',
+                    }}
                 >
                     <Grid item>
                         <div style={{ maxWidth: '35vw' }}>
@@ -38,36 +76,25 @@ const NamePage = () => {
                             accordingly.
                         </div>
                     </Grid>
-                    {/* <Grid item>
-                        <div style={{
-                            backgroundImage: `url(${nameBox})`,
-                            backgroundPosition: '5%',
-                            backgroundSize: 'cover',
-                            backgroundRepeat: 'no-repeat',
-                            width: '100%',
-                            height: '100vh',
-                            position: 'fixed',
-                            zIndex: '1',
-                        }}>
-                            Hi
-                        </div>
-                    </Grid> */}
-                    <Grid item>
+                    <Grid item style={{ paddingTop: '4vh' }}>
                         <input
                             className="text_box"
                             onChange={onChangeName}
                             placeholder="Player Name"
                             type="text"
                         ></input>
-                        {/* <TextField
-                            label="Player Name"
-                            variant="outlined"
-                            onChange={onChangeName}
-                        /> */}
                     </Grid>
                     <Grid item>
-                        <Button onClick={handleConfirm} variant="outlined">
-                            Confirm
+                        <Button
+                            style={{
+                                backgroundColor: 'transparent',
+                                filter: 'opacity(' + startOpacity + ')',
+                            }}
+                            onMouseEnter={handleConfrimEnter}
+                            onMouseLeave={handleConfrimLeave}
+                            onClick={handleConfirm}
+                        >
+                            <ConfirmName></ConfirmName>
                         </Button>
                     </Grid>
                 </Grid>

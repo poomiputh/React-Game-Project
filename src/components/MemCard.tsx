@@ -9,14 +9,7 @@ import { useLayoutEffect, useRef } from 'react'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { sleep } from '../data/userApi'
-import {
-    KingCard_1,
-    KingCard_2,
-    QueenCard_1,
-    QueenCard_2,
-    KnightCard_1,
-    KnightCard_2,
-} from './image_components/ImageComponents'
+import { MordoxCard } from './image_components/ImageComponents'
 
 const shuffleNumArray = (numArray: number[]) => {
     const shuffledNumbers = [...numArray]
@@ -145,12 +138,30 @@ const MemCard = ({ playerName }: MemCardProps) => {
 
     const gameCards = (index: number, isFlipped: boolean) => {
         const gameCards: any[] = [
-            <KingCard_1 isFlipped={isFlipped} />,
-            <KingCard_2 isFlipped={isFlipped} />,
-            <QueenCard_1 isFlipped={isFlipped} />,
-            <QueenCard_2 isFlipped={isFlipped} />,
-            <KnightCard_1 isFlipped={isFlipped} />,
-            <KnightCard_2 isFlipped={isFlipped} />,
+            <MordoxCard
+                isFlipped={isFlipped}
+                src="src\images\kingCard_1.svg"
+            />,
+            <MordoxCard
+                isFlipped={isFlipped}
+                src="src\images\queenCard_1.svg"
+            />,
+            <MordoxCard
+                isFlipped={isFlipped}
+                src="src\images\kingCard_2.svg"
+            />,
+            <MordoxCard
+                isFlipped={isFlipped}
+                src="src\images\queenCard_2.svg"
+            />,
+            <MordoxCard
+                isFlipped={isFlipped}
+                src="src\images\knightCard_1.svg"
+            />,
+            <MordoxCard
+                isFlipped={isFlipped}
+                src="src\images\knightCard_2.svg"
+            />,
         ]
         return gameCards[index]
     }

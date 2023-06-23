@@ -98,7 +98,7 @@ const ScorePage = () => {
                         xs={12}
                         className="text_box"
                         style={{
-                            marginTop: '100px',
+                            marginTop: '10vh',
                             backgroundColor: 'white',
                             zIndex: '1',
                         }}

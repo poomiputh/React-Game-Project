@@ -12,26 +12,26 @@ import titleBG from '../images/title_1.svg'
 const HomePage = () => {
     const [isStart, setIsStart] = useState<boolean>(false)
 
-    const [startOpacity, setStartOpacity] = useState<string>('100%')
+    const [startContrast, setStartContrast] = useState<string>('100%')
     const handleStartButton = () => {
         setIsStart(true)
     }
     const handleStartEnter = () => {
-        setStartOpacity('50%')
+        setStartContrast('150%')
     }
     const handleStartLeave = () => {
-        setStartOpacity('100%')
+        setStartContrast('100%')
     }
 
-    const [scoreOpacity, setScoreOpacity] = useState<string>('100%')
+    const [scoreContrast, setScoreContrast] = useState<string>('100%')
     const handleScoreButton = () => {
         setIsStart(true)
     }
     const handleScoreEnter = () => {
-        setScoreOpacity('50%')
+        setScoreContrast('150%')
     }
     const handleScoreLeave = () => {
-        setScoreOpacity('100%')
+        setScoreContrast('100%')
     }
 
     return (
@@ -78,7 +78,8 @@ const HomePage = () => {
                                 <Button
                                     style={{
                                         backgroundColor: 'transparent',
-                                        filter: 'opacity(' + startOpacity + ')',
+                                        filter:
+                                            'contrast(' + startContrast + ')',
                                     }}
                                     onClick={handleStartButton}
                                     onMouseEnter={handleStartEnter}
@@ -101,7 +102,8 @@ const HomePage = () => {
                                 <Button
                                     style={{
                                         backgroundColor: 'transparent',
-                                        filter: 'opacity(' + scoreOpacity + ')',
+                                        filter:
+                                            'contrast(' + scoreContrast + ')',
                                     }}
                                     onClick={handleScoreButton}
                                     onMouseEnter={handleScoreEnter}

@@ -11,13 +11,11 @@ import { useNavigate } from 'react-router-dom'
 import { sleep } from '../data/userApi'
 import {
     KingCard_1,
-    QueenCard_1,
     KingCard_2,
-    KingCard_3,
-    KingCard_4,
-    QueenCard_4,
+    QueenCard_1,
     QueenCard_2,
-    QueenCard_3,
+    KnightCard_1,
+    KnightCard_2,
 } from './image_components/ImageComponents'
 
 const shuffleNumArray = (numArray: number[]) => {
@@ -67,9 +65,11 @@ const MemCard = ({ playerName }: MemCardProps) => {
     const checkWin = () => {
         const areEqual = JSON.stringify(playerSeq) === JSON.stringify(ranSeq)
         if (areEqual) {
-            setPlayerScore(playerScore + 1)
-            setPlayerSeq([])
-            setTileNum(tileNum + 1)
+            setTimeout(() => {
+                setPlayerScore(playerScore + 1)
+                setPlayerSeq([])
+                setTileNum(tileNum + 1)
+            }, 1500)
         } else if (!areEqual) {
             goToResult()
         }
@@ -143,61 +143,48 @@ const MemCard = ({ playerName }: MemCardProps) => {
         console.log('Score : ', playerScore)
     }, [playerScore])
 
-    const generateCard = () => {
+    const gameCards = (index: number, isFlipped: boolean) => {
         const gameCards: any[] = [
-            <QueenCard_1 opacity="100%" maxHeight={150} />,
-            <QueenCard_2 opacity="100%" maxHeight={150} />,
-            <QueenCard_3 opacity="100%" maxHeight={150} />,
-            <KingCard_1 opacity="100%" maxHeight={150} />,
-            <KingCard_2 opacity="100%" maxHeight={150} />,
-            <KingCard_3 opacity="100%" maxHeight={150} />,
+            <KingCard_1 isFlipped={isFlipped} />,
+            <KingCard_2 isFlipped={isFlipped} />,
+            <QueenCard_1 isFlipped={isFlipped} />,
+            <QueenCard_2 isFlipped={isFlipped} />,
+            <KnightCard_1 isFlipped={isFlipped} />,
+            <KnightCard_2 isFlipped={isFlipped} />,
         ]
+        return gameCards[index]
+    }
+
+    const generateCard = () => {
         let cards: any[] = []
         ranSeq.forEach((e, i) => {
             cards.push(
-                <Grid item key={'G-' + (i + 1)} xs={2} md={2} lg={2}>
+                <Grid item key={'G-' + (i + 1)}>
                     {i + 1 === displayCards[0] ? (
-                        <Card
-                            key={'C-' + (i + 1)}
-                            style={{ backgroundColor: 'lightgreen' }}
-                        >
-                            <CardActionArea disabled={true}>
-                                <CardContent>
-                                    <Grid container justifyContent={'center'}>
-                                        {gameCards[i]}
-                                    </Grid>
-                                </CardContent>
-                            </CardActionArea>
-                        </Card>
+                        <div className="card is-flipped">
+                            {gameCards(i, false)}
+                        </div>
                     ) : (
-                        <Card
-                            key={'C-' + (i + 1)}
-                            onClick={() => handleCardClick(i + 1)}
-                        >
+                        <>
                             {displayCards.length !== 0 ? (
-                                <CardActionArea disabled={true}>
-                                    <CardContent>
-                                        <Grid
-                                            container
-                                            justifyContent={'center'}
-                                        >
-                                            {gameCards[i]}
-                                        </Grid>
-                                    </CardContent>
-                                </CardActionArea>
+                                <div>{gameCards(i, true)}</div>
                             ) : (
-                                <CardActionArea>
-                                    <CardContent>
-                                        <Grid
-                                            container
-                                            justifyContent={'center'}
-                                        >
-                                            {gameCards[i]}
-                                        </Grid>
-                                    </CardContent>
-                                </CardActionArea>
+                                <div
+                                    className="div-clickable"
+                                    onClick={() => {
+                                        handleCardClick(i + 1)
+                                    }}
+                                >
+                                    {playerSeq.includes(i + 1) ? (
+                                        <div className="card is-flipped">
+                                            {gameCards(i, false)}
+                                        </div>
+                                    ) : (
+                                        <div>{gameCards(i, true)}</div>
+                                    )}
+                                </div>
                             )}
-                        </Card>
+                        </>
                     )}
                 </Grid>,
             )

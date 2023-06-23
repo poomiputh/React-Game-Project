@@ -1,98 +1,202 @@
 interface CardProps {
-    opacity: string
-    maxHeight: number
+    opacity?: string
+    maxWidth?: string
+    isFlipped?: boolean
 }
 
-export const KingCard_1 = ({ opacity, maxHeight }: CardProps) => {
+export const KingCard_1 = ({
+    opacity = '100%',
+    maxWidth = '25vh',
+    isFlipped = false,
+}: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
-        maxHeight: maxHeight,
+        maxWidth: maxWidth,
     }
     return (
         <>
-            <img src="src\images\kingCard_1.svg" style={styling}></img>
-        </>
-    )
-}
-
-export const KingCard_2 = ({ opacity, maxHeight }: CardProps) => {
-    const styling = {
-        filter: 'opacity(' + opacity + ')',
-        maxHeight: maxHeight,
-    }
-    return (
-        <>
-            <img src="src\images\kingCard_2.svg" style={styling}></img>
+            {!isFlipped ? (
+                <img src="src\images\kingCard_1.svg" style={styling}></img>
+            ) : (
+                <img src="src\images\backCard_1.svg" style={styling}></img>
+            )}
         </>
     )
 }
 
-export const KingCard_3 = ({ opacity, maxHeight }: CardProps) => {
+export const KingCard_2 = ({
+    opacity = '100%',
+    maxWidth = '25vh',
+    isFlipped = false,
+}: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
-        maxHeight: maxHeight,
+        maxWidth: maxWidth,
     }
     return (
         <>
-            <img src="src\images\kingCard_3.svg" style={styling}></img>
+            {!isFlipped ? (
+                <img src="src\images\kingCard_2.svg" style={styling}></img>
+            ) : (
+                <img src="src\images\backCard_1.svg" style={styling}></img>
+            )}
         </>
     )
 }
 
-export const KingCard_4 = ({ opacity, maxHeight }: CardProps) => {
+export const KingCard_3 = ({
+    opacity = '100%',
+    maxWidth = '25vh',
+    isFlipped = false,
+}: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
-        maxHeight: maxHeight,
+        maxWidth: maxWidth,
     }
     return (
         <>
-            <img src="src\images\kingCard_4.svg" style={styling}></img>
+            {!isFlipped ? (
+                <img src="src\images\kingCard_3.svg" style={styling}></img>
+            ) : (
+                <img src="src\images\backCard_1.svg" style={styling}></img>
+            )}
         </>
     )
 }
 
-export const QueenCard_1 = ({ opacity, maxHeight }: CardProps) => {
+export const KingCard_4 = ({
+    opacity = '100%',
+    maxWidth = '25vh',
+    isFlipped = false,
+}: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
-        maxHeight: maxHeight,
+        maxWidth: maxWidth,
     }
     return (
         <>
-            <img src="src\images\queenCard_1.svg" style={styling}></img>
+            {!isFlipped ? (
+                <img src="src\images\kingCard_4.svg" style={styling}></img>
+            ) : (
+                <img src="src\images\backCard_1.svg" style={styling}></img>
+            )}
         </>
     )
 }
 
-export const QueenCard_2 = ({ opacity, maxHeight }: CardProps) => {
+export const QueenCard_1 = ({
+    opacity = '100%',
+    maxWidth = '25vh',
+    isFlipped = false,
+}: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
-        maxHeight: maxHeight,
+        maxWidth: maxWidth,
     }
     return (
         <>
-            <img src="src\images\queenCard_2.svg" style={styling}></img>
+            {!isFlipped ? (
+                <img src="src\images\queenCard_1.svg" style={styling}></img>
+            ) : (
+                <img src="src\images\backCard_1.svg" style={styling}></img>
+            )}
         </>
     )
 }
-export const QueenCard_3 = ({ opacity, maxHeight }: CardProps) => {
+
+export const QueenCard_2 = ({
+    opacity = '100%',
+    maxWidth = '25vh',
+    isFlipped = false,
+}: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
-        maxHeight: maxHeight,
+        maxWidth: maxWidth,
     }
     return (
         <>
-            <img src="src\images\queenCard_3.svg" style={styling}></img>
+            {!isFlipped ? (
+                <img src="src\images\queenCard_2.svg" style={styling}></img>
+            ) : (
+                <img src="src\images\backCard_1.svg" style={styling}></img>
+            )}
         </>
     )
 }
-export const QueenCard_4 = ({ opacity, maxHeight }: CardProps) => {
+export const QueenCard_3 = ({
+    opacity = '100%',
+    maxWidth = '25vh',
+    isFlipped = false,
+}: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
-        maxHeight: maxHeight,
+        maxWidth: maxWidth,
     }
     return (
         <>
-            <img src="src\images\queenCard_4.svg" style={styling}></img>
+            {!isFlipped ? (
+                <img src="src\images\queenCard_3.svg" style={styling}></img>
+            ) : (
+                <img src="src\images\backCard_1.svg" style={styling}></img>
+            )}
+        </>
+    )
+}
+export const QueenCard_4 = ({
+    opacity = '100%',
+    maxWidth = '25vh',
+    isFlipped = false,
+}: CardProps) => {
+    const styling = {
+        filter: 'opacity(' + opacity + ')',
+        maxWidth: maxWidth,
+    }
+    return (
+        <>
+            {!isFlipped ? (
+                <img src="src\images\queenCard_4.svg" style={styling}></img>
+            ) : (
+                <img src="src\images\backCard_1.svg" style={styling}></img>
+            )}
+        </>
+    )
+}
+
+export const KnightCard_1 = ({
+    opacity = '100%',
+    maxWidth = '25vh',
+    isFlipped = false,
+}: CardProps) => {
+    const styling = {
+        filter: 'opacity(' + opacity + ')',
+        maxWidth: maxWidth,
+    }
+    return (
+        <>
+            {!isFlipped ? (
+                <img src="src\images\knightCard_1.svg" style={styling}></img>
+            ) : (
+                <img src="src\images\backCard_1.svg" style={styling}></img>
+            )}
+        </>
+    )
+}
+export const KnightCard_2 = ({
+    opacity = '100%',
+    maxWidth = '25vh',
+    isFlipped = false,
+}: CardProps) => {
+    const styling = {
+        filter: 'opacity(' + opacity + ')',
+        maxWidth: maxWidth,
+    }
+    return (
+        <>
+            {!isFlipped ? (
+                <img src="src\images\knightCard_2.svg" style={styling}></img>
+            ) : (
+                <img src="src\images\backCard_1.svg" style={styling}></img>
+            )}
         </>
     )
 }

@@ -1,17 +1,20 @@
 interface CardProps {
     opacity?: string
     maxWidth?: string
+    minWidth?: string
     isFlipped?: boolean
 }
 
 export const KingCard_1 = ({
     opacity = '100%',
-    maxWidth = '25vh',
+    maxWidth = '20vh',
+    minWidth = '20vh',
     isFlipped = false,
 }: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
         maxWidth: maxWidth,
+        minWidth: minWidth,
     }
     return (
         <>
@@ -26,12 +29,14 @@ export const KingCard_1 = ({
 
 export const KingCard_2 = ({
     opacity = '100%',
-    maxWidth = '25vh',
+    minWidth = '20vh',
+    maxWidth = '20vh',
     isFlipped = false,
 }: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
         maxWidth: maxWidth,
+        minWidth: minWidth,
     }
     return (
         <>
@@ -46,12 +51,14 @@ export const KingCard_2 = ({
 
 export const KingCard_3 = ({
     opacity = '100%',
-    maxWidth = '25vh',
+    maxWidth = '20vh',
+    minWidth = '20vh',
     isFlipped = false,
 }: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
         maxWidth: maxWidth,
+        minWidth: minWidth,
     }
     return (
         <>
@@ -66,12 +73,14 @@ export const KingCard_3 = ({
 
 export const KingCard_4 = ({
     opacity = '100%',
-    maxWidth = '25vh',
+    maxWidth = '20vh',
+    minWidth = '20vh',
     isFlipped = false,
 }: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
         maxWidth: maxWidth,
+        minWidth: minWidth,
     }
     return (
         <>
@@ -86,12 +95,14 @@ export const KingCard_4 = ({
 
 export const QueenCard_1 = ({
     opacity = '100%',
-    maxWidth = '25vh',
+    maxWidth = '20vh',
+    minWidth = '20vh',
     isFlipped = false,
 }: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
         maxWidth: maxWidth,
+        minWidth: minWidth,
     }
     return (
         <>
@@ -106,12 +117,14 @@ export const QueenCard_1 = ({
 
 export const QueenCard_2 = ({
     opacity = '100%',
-    maxWidth = '25vh',
+    maxWidth = '20vh',
+    minWidth = '20vh',
     isFlipped = false,
 }: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
         maxWidth: maxWidth,
+        minWidth: minWidth,
     }
     return (
         <>
@@ -125,12 +138,14 @@ export const QueenCard_2 = ({
 }
 export const QueenCard_3 = ({
     opacity = '100%',
-    maxWidth = '25vh',
+    maxWidth = '20vh',
+    minWidth = '20vh',
     isFlipped = false,
 }: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
         maxWidth: maxWidth,
+        minWidth: minWidth,
     }
     return (
         <>
@@ -144,12 +159,14 @@ export const QueenCard_3 = ({
 }
 export const QueenCard_4 = ({
     opacity = '100%',
-    maxWidth = '25vh',
+    maxWidth = '20vh',
+    minWidth = '20vh',
     isFlipped = false,
 }: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
         maxWidth: maxWidth,
+        minWidth: minWidth,
     }
     return (
         <>
@@ -164,12 +181,14 @@ export const QueenCard_4 = ({
 
 export const KnightCard_1 = ({
     opacity = '100%',
-    maxWidth = '25vh',
+    maxWidth = '20vh',
+    minWidth = '20vh',
     isFlipped = false,
 }: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
         maxWidth: maxWidth,
+        minWidth: minWidth,
     }
     return (
         <>
@@ -183,12 +202,14 @@ export const KnightCard_1 = ({
 }
 export const KnightCard_2 = ({
     opacity = '100%',
-    maxWidth = '25vh',
+    maxWidth = '20vh',
+    minWidth = '20vh',
     isFlipped = false,
 }: CardProps) => {
     const styling = {
         filter: 'opacity(' + opacity + ')',
         maxWidth: maxWidth,
+        minWidth: minWidth,
     }
     return (
         <>

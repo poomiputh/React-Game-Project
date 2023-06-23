@@ -50,6 +50,46 @@ export const ScoreGameButton = () => {
         </>
     )
 }
+export const ReTurnToHome = () => {
+    return (
+        <>
+            <img
+                src="src\images\Back_1.svg"
+                style={{ minHeight: '12vh' }}
+            ></img>
+        </>
+    )
+}
+export const DelScore = () => {
+    return (
+        <>
+            <img
+                src="src\images\Bin.svg"
+                style={{ minHeight: '3vh', maxHeight: '5vh' }}
+            ></img>
+        </>
+    )
+}
+export const ConfirmName = () => {
+    return (
+        <>
+            <img
+                src="src\images\Comfirm.svg"
+                style={{ minHeight: '12vh' }}
+            ></img>
+        </>
+    )
+}
+export const BackBtn = () => {
+    return (
+        <>
+            <img
+                src="src\images\backBTN_2.svg"
+                style={{ minHeight: '10vh' }}
+            ></img>
+        </>
+    )
+}
 
 export const Sonic = () => {
     return (

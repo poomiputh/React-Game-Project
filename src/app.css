@@ -46,6 +46,12 @@ body {
     box-shadow: -5px 0 0 0 black, 5px 0 0 0 black, 0 -5px 0 0 black,
         0 5px 0 0 black;
 }
+.text_box {
+    padding: 10px;
+    margin: 2em auto;
+    box-shadow: -5px 0 0 0 black, 5px 0 0 0 black, 0 -5px 0 0 black,
+        0 5px 0 0 black;
+}
 
 .card {
     transform-style: preserve-3d;
@@ -58,4 +64,7 @@ body {
 
 .div-clickable {
     cursor: pointer;
+}
+Back-1:hover {
+    opacity: 50%;
 }

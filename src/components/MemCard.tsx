@@ -1,15 +1,9 @@
-import {
-    Grid,
-    Card,
-    CardActionArea,
-    CardContent,
-    Typography,
-} from '@mui/material'
+import { Button, Grid, Typography } from '@mui/material'
 import { useLayoutEffect, useRef } from 'react'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { sleep } from '../data/userApi'
-import { MordoxCard } from './image_components/ImageComponents'
+import { BackBtn, MordoxCard } from './image_components/ImageComponents'
 
 const shuffleNumArray = (numArray: number[]) => {
     const shuffledNumbers = [...numArray]
@@ -41,6 +35,18 @@ const MemCard = ({ playerName }: MemCardProps) => {
     const [displayCards, setDisplayCards] = useState<number[]>([0, ...ranSeq])
 
     const [clickable, setClickable] = useState<boolean>(false)
+
+    const [backContrast, setBackContrast] = useState<string>('100%')
+
+    const goToBack = () => {
+        window.location.reload()
+    }
+    const handleBackEnter = () => {
+        setBackContrast('150%')
+    }
+    const handleBackLeave = () => {
+        setBackContrast('100%')
+    }
 
     const goToResult = () => {
         navigate('/result', {
@@ -205,7 +211,7 @@ const MemCard = ({ playerName }: MemCardProps) => {
 
     return (
         <>
-            <Grid
+            {/* <Grid
                 container
                 spacing={2}
                 paddingTop={2}
@@ -218,11 +224,39 @@ const MemCard = ({ playerName }: MemCardProps) => {
                         {playerName}'s Score : {playerScore}
                     </Typography>
                 </Grid>
+            </Grid> */}
+            <Grid
+                container
+                spacing={2}
+                paddingTop={'2vh'}
+                marginTop={0}
+                style={{ position: 'relative', zIndex: '2' }}
+            >
+                <Grid item>
+                    <Button
+                        style={{
+                            backgroundColor: 'transparent',
+                            filter: 'contrast(' + backContrast + ')',
+                        }}
+                        onMouseEnter={handleBackEnter}
+                        onMouseLeave={handleBackLeave}
+                        onClick={goToBack}
+                    >
+                        <BackBtn></BackBtn>
+                    </Button>
+                </Grid>
+                <Grid item>
+                    <Typography
+                        style={{ fontFamily: 'Public Pixel', fontSize: '3vh' }}
+                    >
+                        {playerName}'s score : {playerScore}
+                    </Typography>
+                </Grid>
             </Grid>
             <Grid
                 container
                 spacing={2}
-                paddingTop={3}
+                paddingTop={'4vh'}
                 justifyContent={'center'}
                 style={{ position: 'relative', zIndex: '2' }}
             >

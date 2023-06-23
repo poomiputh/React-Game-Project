@@ -54,7 +54,7 @@ export const ReTurnToHome = () => {
     return (
         <>
             <img
-                src="src\images\Back_1.svg"
+                src="src\images\back_1.svg"
                 style={{ minHeight: '12vh' }}
             ></img>
         </>
@@ -64,7 +64,7 @@ export const DelScore = () => {
     return (
         <>
             <img
-                src="src\images\Bin.svg"
+                src="src\images\bin.svg"
                 style={{ minHeight: '3vh', maxHeight: '5vh' }}
             ></img>
         </>
@@ -74,7 +74,7 @@ export const ConfirmName = () => {
     return (
         <>
             <img
-                src="src\images\Comfirm.svg"
+                src="src\images\confirm.svg"
                 style={{ minHeight: '12vh' }}
             ></img>
         </>
@@ -87,14 +87,6 @@ export const BackBtn = () => {
                 src="src\images\backBTN_2.svg"
                 style={{ minHeight: '10vh' }}
             ></img>
-        </>
-    )
-}
-
-export const Sonic = () => {
-    return (
-        <>
-            <img src="src\images\sonic.svg" style={{ minHeight: 80 }}></img>
         </>
     )
 }

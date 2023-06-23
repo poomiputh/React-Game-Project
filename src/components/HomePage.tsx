@@ -8,8 +8,11 @@ import NamePage from './NamePage'
 import castleBG from '../images/castleBG_1.svg'
 import cloudBG from '../images/cloudBG_1.svg'
 import titleBG from '../images/title_1.svg'
+import { useNavigate } from 'react-router-dom'
 
 const HomePage = () => {
+    const navigate = useNavigate()
+
     const [isStart, setIsStart] = useState<boolean>(false)
 
     const [startContrast, setStartContrast] = useState<string>('100%')
@@ -25,7 +28,7 @@ const HomePage = () => {
 
     const [scoreContrast, setScoreContrast] = useState<string>('100%')
     const handleScoreButton = () => {
-        setIsStart(true)
+        navigate('score')
     }
     const handleScoreEnter = () => {
         setScoreContrast('150%')

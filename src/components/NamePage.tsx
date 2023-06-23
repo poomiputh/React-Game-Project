@@ -1,31 +1,18 @@
 import { useEffect, useState } from 'react'
-import { Button, Grid, TextField, Typography } from '@mui/material'
+import { Button, Grid } from '@mui/material'
 import GamePage from './GamePage'
-import nameBox from '../images/nameBox.svg'
-import { ConfirmName, BackBtn } from './image_components/ImageComponents'
-import { useNavigate } from 'react-router-dom'
+import { ConfirmName } from './image_components/ImageComponents'
 
 const NamePage = () => {
-    const navigate = useNavigate()
-
-    const goToBack = () => {
-        navigate('/')
-    }
-    const [startOpacity, setConfrimOpacity] = useState<string>('100%')
-    const [backOpacity, setBackOpacity] = useState<string>('100%')
+    const [startContrast, setConfrimContrast] = useState<string>('100%')
     const [playerName, setPlayerName] = useState<string>('Player')
     const [isStartGame, setIsStartGame] = useState<boolean>(false)
+
     const handleConfrimEnter = () => {
-        setConfrimOpacity('50%')
+        setConfrimContrast('150%')
     }
     const handleConfrimLeave = () => {
-        setConfrimOpacity('100%')
-    }
-    const handleBackEnter = () => {
-        setBackOpacity('50%')
-    }
-    const handleBackLeave = () => {
-        setBackOpacity('100%')
+        setConfrimContrast('100%')
     }
     const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPlayerName(e.target.value)
@@ -40,19 +27,6 @@ const NamePage = () => {
 
     return (
         <>
-            <Button
-                style={{
-                    backgroundColor: 'transparent',
-                    filter: 'opacity(' + backOpacity + ')',
-                    position: 'fixed',
-                    zIndex: '2',
-                }}
-                onMouseEnter={handleBackEnter}
-                onMouseLeave={handleBackLeave}
-                onClick={goToBack}
-            >
-                <BackBtn></BackBtn>
-            </Button>
             {isStartGame ? (
                 <GamePage playerName={playerName} />
             ) : (
@@ -88,7 +62,7 @@ const NamePage = () => {
                         <Button
                             style={{
                                 backgroundColor: 'transparent',
-                                filter: 'opacity(' + startOpacity + ')',
+                                filter: 'contrast(' + startContrast + ')',
                             }}
                             onMouseEnter={handleConfrimEnter}
                             onMouseLeave={handleConfrimLeave}

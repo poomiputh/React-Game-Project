@@ -1,11 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ProjectName } from '../App'
-import {
-    IScoreRequest,
-    addAppScore,
-    getAllAppScores,
-    deleteAppScore,
-} from '../api/scoreApi'
+import { IScoreRequest, getAllAppScores } from '../api/scoreApi'
 import { useEffect, useState } from 'react'
 import ScoreLists from './ScorePage/ScoreLists'
 import { Button, Grid, Skeleton, Typography } from '@mui/material'
@@ -13,7 +8,7 @@ import { ReTurnToHome } from './image_components/ImageComponents'
 import castleBG from '../images/castleBG_1.svg'
 import cloudBG from '../images/cloudBG_1.svg'
 
-const GameEndPage = () => {
+const ScorePage = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true)
 
     const [startOpacity, setBackOpacity] = useState<string>('100%')
@@ -25,14 +20,7 @@ const GameEndPage = () => {
     }
     const navigate = useNavigate()
 
-    const location = useLocation()
     const [scoresList, setScoresList] = useState<IScoreRequest[]>([])
-
-    const appScore = {
-        name: location.state.playerName,
-        score: location.state.score,
-        projectName: ProjectName,
-    }
 
     const goToHome = () => {
         navigate('/')
@@ -46,27 +34,6 @@ const GameEndPage = () => {
 
     const onLoaded = async () => {
         try {
-            await getAllAppScores(ProjectName).then(async (result) => {
-                console.log('result', result)
-                if (result!.length === 0) {
-                    await addAppScore(appScore)
-                } else {
-                    const isExist = result!.find((e) => {
-                        return e.name === location.state.playerName
-                    })
-                    if (isExist === undefined) {
-                        await addAppScore(appScore)
-                    } else {
-                        if (isExist.score < location.state.score) {
-                            await deleteAppScore(isExist.id!)
-                            await addAppScore(appScore)
-                        }
-                    }
-                }
-            })
-        } catch (error) {
-            console.log('addAppScore Error : ', error)
-        } finally {
             setIsLoading(true)
             await getAllAppScores(ProjectName).then((result) => {
                 let orderedResult = [...result!]
@@ -76,6 +43,8 @@ const GameEndPage = () => {
                 setScoresList(orderedResult)
             })
             setIsLoading(false)
+        } catch (error) {
+            console.log('addAppScore Error : ', error)
         }
     }
 
@@ -128,17 +97,6 @@ const GameEndPage = () => {
                         }}
                     >
                         <Grid item xs={12}>
-                            <Typography
-                                style={{
-                                    fontFamily: 'Public Pixel',
-                                    fontSize: '30px',
-                                    display: 'grid',
-                                    placeItems: 'center',
-                                    paddingLeft: '10px',
-                                }}
-                            >
-                                Your score: {location.state.score}
-                            </Typography>
                             <Typography
                                 style={{
                                     fontFamily: 'Public Pixel',
@@ -225,4 +183,4 @@ const GameEndPage = () => {
     )
 }
 
-export default GameEndPage
+export default ScorePage

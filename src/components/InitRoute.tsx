@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import HomePage from './HomePage'
 import GameEndPage from './GameEndPage'
+import ScorePage from './ScorePage'
 
 const router = createBrowserRouter([
     {
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
     {
         path: 'result',
         element: <GameEndPage />,
+    },
+    {
+        path: 'score',
+        element: <ScorePage />,
     },
 ])
 

@@ -41,15 +41,21 @@ const NamePage = () => {
                         style={{
                             position: 'fixed',
                             zIndex: '2',
-                            top: '10vh',
+                            top: '5vh',
                         }}
                     >
                         <Grid item>
-                            <div style={{ maxWidth: '60vw', fontSize: '2vh' }}>
+                            <div style={{ maxWidth: '70vw', fontSize: '2vh' }}>
                                 How To Play <br />
+                                <br />
                                 1. Random sequence of cards will be revealed at
-                                the start of the round. <br />
-                                2. Memorize the sequence then choose the card
+                                the start of each round.
+                                <br />
+                                2. The number of cards will increase every 3
+                                round until there are 6 cards on the board. (9
+                                rounds in total)
+                                <br />
+                                3. Memorize the sequence then choose the card
                                 accordingly.
                             </div>
                         </Grid>
@@ -62,7 +68,7 @@ const NamePage = () => {
                         style={{
                             position: 'fixed',
                             zIndex: '2',
-                            top: '25vh',
+                            top: '30vh',
                         }}
                     >
                         <Grid item style={{ paddingTop: '4vh' }}>

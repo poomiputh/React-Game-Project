@@ -24,6 +24,8 @@ interface MemCardProps {
 const MemCard = ({ playerName }: MemCardProps) => {
     const navigate = useNavigate()
 
+    const [curRound, setCurRound] = useState<number>(1)
+    const [prevTileNum, setPrevTileNum] = useState<number>(4)
     const [tileNum, setTileNum] = useState<number>(4)
     const [ranSeq, setRanSeq] = useState<number[]>(
         shuffleNumArray(
@@ -65,9 +67,15 @@ const MemCard = ({ playerName }: MemCardProps) => {
         const areEqual = JSON.stringify(playerSeq) === JSON.stringify(ranSeq)
         if (areEqual) {
             setTimeout(() => {
+                setCurRound(curRound + 1)
                 setPlayerScore(playerScore + 1)
                 setPlayerSeq([])
-                setTileNum(tileNum + 1)
+                if (curRound % 5 === 0) {
+                    setTileNum(tileNum + 1)
+                } else {
+                    setPrevTileNum(tileNum)
+                    setTileNum(0)
+                }
             }, 1500)
         } else if (!areEqual) {
             goToResult()
@@ -98,17 +106,21 @@ const MemCard = ({ playerName }: MemCardProps) => {
             firstUpdate.current = false
         } else {
             console.log('tileNum : ', tileNum)
-            if (tileNum >= 7) {
-                goToResult()
+            if (tileNum === 0) {
+                setTileNum(prevTileNum)
             } else {
-                setRanSeq(
-                    shuffleNumArray(
-                        Array.from(
-                            { length: tileNum },
-                            (_, index) => index + 1,
+                if (tileNum >= 7) {
+                    goToResult()
+                } else {
+                    setRanSeq(
+                        shuffleNumArray(
+                            Array.from(
+                                { length: tileNum },
+                                (_, index) => index + 1,
+                            ),
                         ),
-                    ),
-                )
+                    )
+                }
             }
         }
     }, [tileNum])

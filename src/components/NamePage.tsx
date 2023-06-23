@@ -28,50 +28,67 @@ const NamePage = () => {
     return (
         <>
             {isStartGame ? (
-                <GamePage playerName={playerName} />
+                <>
+                    <GamePage playerName={playerName} />
+                </>
             ) : (
-                <Grid
-                    container
-                    justifyContent={'center'}
-                    spacing={2}
-                    marginTop={0}
-                    style={{
-                        position: 'fixed',
-                        zIndex: '2',
-                        top: '30vh',
-                    }}
-                >
-                    <Grid item>
-                        <div style={{ maxWidth: '35vw' }}>
-                            How To Play <br />
-                            1. Random sequence of cards will be revealed at the
-                            start of the round. <br />
-                            2. Memorize the sequence then choose the card
-                            accordingly.
-                        </div>
+                <>
+                    <Grid
+                        container
+                        justifyContent={'center'}
+                        spacing={2}
+                        marginTop={0}
+                        style={{
+                            position: 'fixed',
+                            zIndex: '2',
+                            top: '10vh',
+                        }}
+                    >
+                        <Grid item>
+                            <div style={{ maxWidth: '60vw', fontSize: '2vh' }}>
+                                How To Play <br />
+                                1. Random sequence of cards will be revealed at
+                                the start of the round. <br />
+                                2. Memorize the sequence then choose the card
+                                accordingly.
+                            </div>
+                        </Grid>
                     </Grid>
-                    <Grid item style={{ paddingTop: '4vh' }}>
-                        <input
-                            className="text_box"
-                            onChange={onChangeName}
-                            placeholder="Player Name"
-                            type="text"
-                        ></input>
+                    <Grid
+                        container
+                        justifyContent={'center'}
+                        spacing={2}
+                        marginTop={0}
+                        style={{
+                            position: 'fixed',
+                            zIndex: '2',
+                            top: '25vh',
+                        }}
+                    >
+                        <Grid item style={{ paddingTop: '4vh' }}>
+                            <input
+                                className="text_box"
+                                onChange={onChangeName}
+                                placeholder="Player Name"
+                                type="text"
+                                style={{ maxWidth: '25vh', minHeight: '3vh' }}
+                            ></input>
+                        </Grid>
+                        <Grid item>
+                            <Button
+                                style={{
+                                    backgroundColor: 'transparent',
+                                    filter: 'contrast(' + startContrast + ')',
+                                }}
+                                onMouseEnter={handleConfrimEnter}
+                                onMouseLeave={handleConfrimLeave}
+                                onClick={handleConfirm}
+                            >
+                                <ConfirmName></ConfirmName>
+                            </Button>
+                        </Grid>
                     </Grid>
-                    <Grid item>
-                        <Button
-                            style={{
-                                backgroundColor: 'transparent',
-                                filter: 'contrast(' + startContrast + ')',
-                            }}
-                            onMouseEnter={handleConfrimEnter}
-                            onMouseLeave={handleConfrimLeave}
-                            onClick={handleConfirm}
-                        >
-                            <ConfirmName></ConfirmName>
-                        </Button>
-                    </Grid>
-                </Grid>
+                </>
             )}
         </>
     )

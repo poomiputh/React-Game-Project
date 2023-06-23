@@ -75,7 +75,7 @@ export const ConfirmName = () => {
         <>
             <img
                 src="src\images\confirm.svg"
-                style={{ minHeight: '12vh' }}
+                style={{ minHeight: '13vh', maxHeight: '15vh' }}
             ></img>
         </>
     )
